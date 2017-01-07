@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mandelbrot.c                                    :+:      :+:    :+:   */
+/*   ft_star.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/03 17:03:47 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/07 21:10:15 by jdesmare         ###   ########.fr       */
+/*   Created: 2017/01/07 21:38:39 by jdesmare          #+#    #+#             */
+/*   Updated: 2017/01/07 21:45:52 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ static void		ft_square_z(t_info *map, float z_r, float z_i)
 	while ((z_r * z_r + z_i * z_i) < 4 && map->i < map->itmax)
 	{
 		tmp = z_r;
-		z_r = z_r * z_r - z_i * z_i + map->c_r;
-		z_i = 2 * z_i * tmp + map->c_i;
+		z_r = fabsf(z_r * z_r - z_i * z_i + map->c_r);
+		z_i = fabsf(2 * z_i * tmp + map->c_i);
 		map->i++;
 	}
 }
 
-void			ft_mandeldraw(t_info *map)
+void			ft_stardraw(t_info *map)
 {
 	float		z_r;
 	float		z_i;
@@ -37,11 +37,9 @@ void			ft_mandeldraw(t_info *map)
 		map->x = 0;
 		while (map->x < map->window_x)
 		{
-			map->c_r = 0.003 * map->x / map->zoom + map->x1;
-			map->c_i = 0.003 * map->y / map->zoom + map->y1;
 			map->i = 0;
-			z_r = 0;
-			z_i = 0;
+			z_r = 0.003 * map->x / map->zoom + map->x1;
+			z_i = 0.003 * map->y / map->zoom + map->y1;
 			ft_square_z(map, z_r, z_i);
 			ft_set_colors(map);
 			ft_pixel_put(map);
@@ -52,12 +50,14 @@ void			ft_mandeldraw(t_info *map)
 	ft_destroy_image(map);
 }
 
-void			ft_mandelbrot_values(t_info *map)
+void			ft_star_values(t_info *map)
 {
-	map->x1 = -2.1;
-	map->x2 = 0.6;
-	map->y1 = -1.2;
-	map->y2 = 1.2;
+	map->x1 = -1.5;
+	map->x2 = 1.5;
+	map->y1 = -1.5;
+	map->y2 = 1.5;
+	map->c_r = -1.476;
+	map->c_i = 0;
 	map->window_x = 1000;
 	map->window_y = 1000;
 	map->itmax = 50;
@@ -66,12 +66,12 @@ void			ft_mandelbrot_values(t_info *map)
 	map->deform = 1;
 }
 
-int				ft_mandelbrot(t_info *map)
+int				ft_star(t_info *map)
 {
-	ft_mandelbrot_values(map);
+	ft_star_values(map);
 	if (ft_init(map) == -1)
 		return (-1);
-	ft_mandeldraw(map);
+	ft_stardraw(map);
 	mlx_key_hook(map->window, ft_key_event, map);
 	mlx_mouse_hook(map->window, ft_mouse_event, map);
 	mlx_hook(map->window, MOTION_NOTIFY, PTRMOTIONMASK, ft_mouse_move, map);

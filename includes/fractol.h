@@ -6,12 +6,12 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 11:37:20 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/07 16:54:11 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/01/07 22:06:55 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#ifndef FRACTOL_H
+# define FRACTOL_H
 
 # include <mlx.h>
 # include <math.h>
@@ -19,7 +19,6 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <errno.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include "../libft/libft.h"
 # include "../libft/get_next_line.h"
@@ -33,7 +32,7 @@ typedef struct		s_info
 	void	*window;
 	void	*image;
 	int		window_x;
-	int 	window_y;
+	int		window_y;
 	int		red;
 	int		green;
 	int		blue;
@@ -87,11 +86,19 @@ void				ft_white(t_info *map);
 void				ft_red(t_info *map);
 void				ft_blue(t_info *map);
 void				ft_orange(t_info *map);
+void				ft_yellow(t_info *map);
+void				ft_light_grey(t_info *map);
 void				ft_colors_0(t_info *map);
 void				ft_colors_1(t_info *map);
 void				ft_colors_2(t_info *map);
 void				ft_gradient_weird(t_info *map);
 void				ft_degradient_blue(t_info *map);
 void				ft_gradient_blue(t_info *map);
+void				ft_braindraw(t_info *map);
+void				ft_brain_values(t_info *map);
+int					ft_brain(t_info *map);
+void				ft_stardraw(t_info *map);
+void				ft_star_values(t_info *map);
+int					ft_star(t_info *map);
 
 #endif

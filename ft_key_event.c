@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/02 18:05:38 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/07 16:54:56 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/01/07 21:54:06 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ static void		ft_r(t_info *map)
 		ft_burningship_values(map);
 	if (map->c == 'm')
 		ft_mandelbrot_values(map);
+	if (map->c == 'B')
+		ft_brain_values(map);
+	if (map->c == 's')
+		ft_star_values(map);
 }
 
 static void		ft_arrow_moves(int keycode, t_info *map)
@@ -51,17 +55,16 @@ static void		ft_arrow_moves(int keycode, t_info *map)
 int				ft_key_event(int keycode, t_info *map)
 {
 	mlx_clear_window(map->mlx, map->window);
-	ft_putnbr(keycode);
 	if (keycode == 53)
 		exit(0);
 	if (keycode == 31)
 		map->deform++;
 	if (keycode == 83)
-		map->colors = 0;
-	if (keycode == 84)
 		map->colors = 1;
-	if (keycode == 85)
+	if (keycode == 84)
 		map->colors = 2;
+	if (keycode == 85)
+		map->colors = 3;
 	if (keycode == 69)
 		map->itmax += 5;
 	if (keycode == 78 && map->itmax > 10)

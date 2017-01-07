@@ -1,30 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_expose_hook.c                                   :+:      :+:    :+:   */
+/*   ft_colors3.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/02 18:23:42 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/07 21:59:46 by jdesmare         ###   ########.fr       */
+/*   Created: 2017/01/07 18:31:49 by jdesmare          #+#    #+#             */
+/*   Updated: 2017/01/07 20:05:12 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/fractol.h"
 
-int		ft_expose_hook(t_info *map)
+void		ft_gradient_weird(t_info *map)
 {
-	if (map->c == 'm')
-		ft_mandeldraw(map);
-	if (map->c == 'j')
-		ft_juliadraw(map);
-	if (map->c == 'b')
-		ft_burningdraw(map);
-	if (map->c == 'f')
-		ft_frogdraw(map);
-	if (map->c == 'B')
-		ft_braindraw(map);
-	if (map->c == 's')
-		ft_stardraw(map);
-	return (1);
+	int		n;
+
+	n = 0;
+	ft_pink(map);
+	while (n < map->i)
+	{
+		map->green += 35;
+		map->blue -= 10;
+		n++;
+	}
+}
+
+void		ft_degradient_blue(t_info *map)
+{
+	int		n;
+
+	n = 0;
+	ft_black(map);
+	while (n < map->i)
+	{
+		map->blue += 25;
+		n++;
+	}
+}
+
+void		ft_gradient_blue(t_info *map)
+{
+	int		n;
+
+	n = 0;
+	ft_white(map);
+	while (n < map->i)
+	{
+		map->red -= 25;
+		map->green -= 25;
+		n++;
+	}
 }

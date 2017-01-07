@@ -6,7 +6,7 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/02 11:34:13 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/07 16:24:36 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/01/07 21:47:12 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,16 @@ int		main(int argc, char **argv)
 		return (-1);
 	if (argc != 2)
 	{
-		ft_putstr_fd("Usage : ./fdf <fractal_name> [julia | mandelbrot | frog | burningship]\n", 2);
+		ft_putstr_fd("Usage : ./fdf <fractal_name> [julia | mandelbrot "
+				"| frog | burningship | brain | star]\n"
+				, 2);
 		return (-1);
 	}
 	if (ft_fractol(map, argv[1]) == -1)
 	{
-		ft_putstr_fd("Usage : ./fdf <fractal_name> [julia | mandelbrot | frog | burningship]\n", 2);
+		ft_putstr_fd("Usage : ./fdf <fractal_name> [julia | mandelbrot"
+				"| frog | burningship | brain | star]\n"
+				, 2);
 		return (-1);
 	}
 	free(map);

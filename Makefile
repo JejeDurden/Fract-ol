@@ -6,7 +6,7 @@
 #    By: jdesmare <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/11 10:38:56 by jdesmare          #+#    #+#              #
-#*   Updated: 2017/01/07 16:19:24 by jdesmare         ###   ########.fr       *#
+#*   Updated: 2017/01/07 21:46:41 by jdesmare         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,9 @@ SRC =	main.c						\
 		ft_frog.c					\
 		ft_colors.c					\
 		ft_colors2.c				\
+		ft_colors3.c				\
+		ft_brain.c					\
+		ft_star.c					\
 
 OBJ = $(SRC:.c=.o)
 

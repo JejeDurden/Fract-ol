@@ -6,13 +6,13 @@
 /*   By: jdesmare <jdesmare@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/04 15:17:02 by jdesmare          #+#    #+#             */
-/*   Updated: 2017/01/07 18:12:09 by jdesmare         ###   ########.fr       */
+/*   Updated: 2017/01/07 18:28:07 by jdesmare         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/fractol.h"
 
-static void ft_button_1(t_info *map, int x, int y)
+static void		ft_button_1(t_info *map, int x, int y)
 {
 	float	tempx1;
 	float	tempy1;
@@ -28,7 +28,8 @@ static void ft_button_1(t_info *map, int x, int y)
 	map->y2 += (fabsf(tempy1 - map->y2) / map->window_y) *
 		(y - map->window_y / 2) / map->zoom;
 }
-static void ft_button_4(t_info *map, int x, int y)
+
+static void		ft_button_4(t_info *map, int x, int y)
 {
 	float	tempx1;
 	float	tempy1;
@@ -45,7 +46,8 @@ static void ft_button_4(t_info *map, int x, int y)
 	map->y2 += (fabsf(tempy1 - map->y2) / map->window_y) *
 		(y - map->window_y / 2) / map->zoom;
 }
-static void ft_button_5(t_info *map, int x, int y)
+
+static void		ft_button_5(t_info *map, int x, int y)
 {
 	float	tempx1;
 	float	tempy1;
@@ -65,7 +67,7 @@ static void ft_button_5(t_info *map, int x, int y)
 		(y - map->window_y / 2) / map->zoom;
 }
 
-int		ft_mouse_event(int button, int x, int y, t_info *map)
+int				ft_mouse_event(int button, int x, int y, t_info *map)
 {
 	mlx_clear_window(map->mlx, map->window);
 	if (x > 0 && x < map->window_x && y > 0 && y < map->window_y)
